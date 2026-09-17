@@ -4,6 +4,8 @@
     var WHATSAPP_NUMERO = '5521966729503';
     var ADDON_PRECO = 97;
     var ADDON_NOME = 'Onboarding Prioritário';
+    var ADDON2_PRECO = 19.99;
+    var ADDON2_NOME = 'Gator Protect PRO';
 
     var PLANOS = {
         essencial: {
@@ -77,6 +79,7 @@
         var plano = PLANOS[slugAtual];
         var ciclo = 'mensal';
         var addonSelecionado = false;
+        var addon2Selecionado = false;
 
         var elBadge = document.getElementById('cartBadge');
         var elNome = document.getElementById('cartNome');
@@ -87,11 +90,13 @@
         var elBeneficios = document.getElementById('cartBeneficios');
         var ciclobtns = document.querySelectorAll('.cart-ciclo-btn');
         var addonBtn = document.getElementById('cartAddonBtn');
+        var addon2Btn = document.getElementById('cartAddon2Btn');
 
         var resumoNome = document.getElementById('resumoNome');
         var resumoCiclo = document.getElementById('resumoCiclo');
         var resumoPreco = document.getElementById('resumoPreco');
         var resumoAddonLinha = document.getElementById('resumoAddonLinha');
+        var resumoAddon2Linha = document.getElementById('resumoAddon2Linha');
         var resumoEconomia = document.getElementById('resumoEconomia');
         var resumoTotal = document.getElementById('resumoTotal');
         var continuarBtn = document.getElementById('cartContinuar');
@@ -122,6 +127,12 @@
             } else {
                 resumoAddonLinha.hidden = true;
             }
+            if (addon2Selecionado) {
+                resumoAddon2Linha.hidden = false;
+                total += ADDON2_PRECO;
+            } else {
+                resumoAddon2Linha.hidden = true;
+            }
 
             resumoEconomia.textContent = ciclo === 'mensal'
                 ? '70% OFF já aplicado'
@@ -146,12 +157,22 @@
             render();
         });
 
+        addon2Btn.addEventListener('click', function () {
+            addon2Selecionado = !addon2Selecionado;
+            addon2Btn.textContent = addon2Selecionado ? 'Adicionado ✓' : 'Adicionar';
+            addon2Btn.classList.toggle('selecionado', addon2Selecionado);
+            render();
+        });
+
         continuarBtn.addEventListener('click', function () {
             var precoPlano = ciclo === 'mensal' ? plano.precoMensal : plano.precoAnual;
             var sufixo = ciclo === 'mensal' ? '/mês' : '/ano';
+            var addonsEscolhidos = [];
+            if (addonSelecionado) addonsEscolhidos.push(ADDON_NOME);
+            if (addon2Selecionado) addonsEscolhidos.push(ADDON2_NOME);
             var msg = 'Olá! Quero contratar o plano ' + plano.nome +
                 ' (' + formatarReal(precoPlano) + sufixo + ')' +
-                (addonSelecionado ? ' com o ' + ADDON_NOME : '') + '.';
+                (addonsEscolhidos.length ? ' com ' + addonsEscolhidos.join(' e ') : '') + '.';
             var url = 'https://wa.me/' + WHATSAPP_NUMERO + '?text=' + encodeURIComponent(msg);
             window.open(url, '_blank', 'noopener');
         });

@@ -286,6 +286,12 @@ img { max-width: 100%; display: block; }
 .cart-instalacao i { color: var(--roxo); font-size: 1rem; flex-shrink: 0; }
 .cart-instalacao strong { color: var(--preto-texto); }
 
+/* ---------- add-ons: título de seção ---------- */
+.cart-addons-titulo { margin: 28px 0 14px; }
+.cart-addons-titulo h3 { font-size: 1.15rem; font-weight: 800; color: #0F172A; margin-bottom: 4px; }
+.cart-addons-titulo h3 span { color: var(--roxo); }
+.cart-addons-titulo p { font-size: 0.9rem; color: var(--cinza-texto); margin: 0; }
+
 /* ---------- add-on ---------- */
 .cart-addon {
   background: var(--branco);
@@ -309,6 +315,7 @@ img { max-width: 100%; display: block; }
   place-items: center;
   font-size: 1.1rem;
 }
+.cart-addon-icon-gold { background: #FEF3C7; color: #D97706; }
 .cart-addon-texto { flex: 1; min-width: 220px; }
 .cart-addon-topo {
   display: flex;
