@@ -123,7 +123,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('botCtaForm');
     if (form) {
         form.addEventListener('submit', function (e) {
-            e.preventDefault();
             const btn = form.querySelector('.btn-bot-form-submit');
             const textoOriginal = btn.textContent;
             btn.textContent = '✅ Recebemos! Vamos te chamar no WhatsApp';
