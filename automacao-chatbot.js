@@ -122,16 +122,42 @@ document.addEventListener('DOMContentLoaded', function () {
     // ============================================
     const form = document.getElementById('botCtaForm');
     if (form) {
+        const GOOGLE_SHEETS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzr4vf2IfnoJmiN6WTCgdl50Sq_6Ksa9w1BfOSX5gGKbqGiqEAykaSxt-NE58ghLJzOSg/exec';
+
         form.addEventListener('submit', function (e) {
+            e.preventDefault();
             const btn = form.querySelector('.btn-bot-form-submit');
             const textoOriginal = btn.textContent;
-            btn.textContent = '✅ Recebemos! Vamos te chamar no WhatsApp';
+            btn.textContent = 'Enviando...';
             btn.disabled = true;
-            setTimeout(function () {
-                btn.textContent = textoOriginal;
-                btn.disabled = false;
-                form.reset();
-            }, 3500);
+
+            const payload = {
+                nome: document.getElementById('botFormNome').value,
+                negocio: document.getElementById('botFormNegocio').value,
+                segmento: document.getElementById('botFormSegmento').value,
+                whatsapp: document.getElementById('botFormWhatsapp').value,
+                email: document.getElementById('botFormEmail').value
+            };
+
+            fetch(GOOGLE_SHEETS_ENDPOINT, {
+                method: 'POST',
+                body: JSON.stringify(payload)
+            })
+                .then(function () {
+                    btn.textContent = '✅ Recebemos! Vamos te chamar no WhatsApp';
+                    setTimeout(function () {
+                        btn.textContent = textoOriginal;
+                        btn.disabled = false;
+                        form.reset();
+                    }, 3500);
+                })
+                .catch(function () {
+                    btn.textContent = 'Erro ao enviar, tente novamente';
+                    setTimeout(function () {
+                        btn.textContent = textoOriginal;
+                        btn.disabled = false;
+                    }, 3500);
+                });
         });
     }
 
