@@ -1,0 +1,9 @@
+{
+  "name": "chatbot-automacao-celly",
+  "version": "1.0.0",
+  "description": "Chatbot IA com Automação - Celly Sistemas",
+  "scripts": {
+    "build": "echo 'No build needed'"
+  },
+  "private": true
+}
