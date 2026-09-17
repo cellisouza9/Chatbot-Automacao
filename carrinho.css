@@ -428,6 +428,9 @@ img { max-width: 100%; display: block; }
   margin-bottom: 16px;
   border-bottom: 1px solid var(--cinza-borda);
 }
+.cart-resumo-linha[hidden] {
+  display: none;
+}
 .cart-resumo-linha strong {
   display: block;
   font-size: 0.92rem;
