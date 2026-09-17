@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Finalize a contratação do seu plano de automação com IA da Celly.">
+<title>Finalizar contratação | CellySistemas</title>
+<link rel="icon" type="image/png" href="portifolio-img/img/favicon-celly.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="carrinho.css?v=1">
+</head>
+<body>
+
+<header class="cart-header">
+  <div class="cart-header-inner">
+    <a href="index.html" class="cart-logo">
+      <img src="portifolio-img/img/logo celly1.png" alt="Celly Automação">
+    </a>
+    <div class="cart-steps">
+      <span class="cart-step active">Carrinho</span>
+      <span class="cart-step-bar"><span></span></span>
+      <span class="cart-step">Falar no WhatsApp</span>
+    </div>
+    <span class="cart-badge-seguro"><i class="fas fa-shield-alt"></i> Sem fidelidade</span>
+  </div>
+</header>
+
+<main class="cart-main">
+  <div class="cart-grid">
+
+    <!-- COLUNA ESQUERDA -->
+    <div class="cart-col-principal">
+      <h1>Seu plano no <span>carrinho</span>:</h1>
+
+      <div class="cart-produto">
+        <div class="cart-produto-topo">
+          <div class="cart-produto-info">
+            <span class="cart-produto-icon"><i class="fas fa-robot"></i></span>
+            <div>
+              <span class="cart-produto-badge" id="cartBadge">MAIS ESCOLHIDO</span>
+              <h2 id="cartNome">Profissional</h2>
+              <p id="cartDesc">O mais escolhido por negócios que querem vender no automático</p>
+            </div>
+          </div>
+          <div class="cart-produto-preco">
+            <span class="cart-preco-antigo" id="cartPrecoAntigo">R$ 1.790,00</span>
+            <span class="cart-desconto">70% OFF</span>
+            <span class="cart-preco-atual"><span id="cartPreco">597</span><small id="cartPrecoSufixo">/mês</small></span>
+          </div>
+        </div>
+
+        <div class="cart-ciclo">
+          <span class="cart-ciclo-label">Ciclo de pagamento</span>
+          <div class="cart-ciclo-opcoes">
+            <button type="button" class="cart-ciclo-btn active" data-ciclo="mensal">Mensal</button>
+            <button type="button" class="cart-ciclo-btn" data-ciclo="anual">Anual <span>Economize</span></button>
+          </div>
+        </div>
+
+        <div class="cart-inclui">
+          <span class="cart-inclui-titulo">O que está incluso:</span>
+          <ul id="cartBeneficios"></ul>
+        </div>
+      </div>
+
+      <div class="cart-addon">
+        <span class="cart-addon-icon"><i class="fas fa-headset"></i></span>
+        <div class="cart-addon-texto">
+          <div class="cart-addon-topo">
+            <strong>Onboarding Prioritário</strong>
+            <span class="cart-addon-tag">Recomendado</span>
+          </div>
+          <p>Sua IA configurada e treinada em até 24h, com um especialista te acompanhando.</p>
+          <ul>
+            <li><i class="fas fa-check"></i> Configuração expressa</li>
+            <li><i class="fas fa-check"></i> Treinamento guiado da IA</li>
+            <li><i class="fas fa-check"></i> Suporte direto no WhatsApp</li>
+          </ul>
+        </div>
+        <div class="cart-addon-acao">
+          <span class="cart-addon-preco">R$ 97<small>única vez</small></span>
+          <button type="button" id="cartAddonBtn" class="cart-addon-btn">Adicionar</button>
+        </div>
+      </div>
+
+      <a href="index.html#planos" class="cart-voltar"><i class="fas fa-arrow-left"></i> Voltar e escolher outro plano</a>
+    </div>
+
+    <!-- RESUMO DO PEDIDO -->
+    <aside class="cart-resumo">
+      <h3>Resumo do pedido</h3>
+
+      <div class="cart-resumo-linha">
+        <div>
+          <strong id="resumoNome">Profissional</strong>
+          <span id="resumoCiclo">Pago mensalmente</span>
+        </div>
+        <span id="resumoPreco">R$ 597</span>
+      </div>
+
+      <div class="cart-resumo-linha cart-resumo-addon" id="resumoAddonLinha" hidden>
+        <div>
+          <strong>Onboarding Prioritário</strong>
+          <span>Pagamento único</span>
+        </div>
+        <span>R$ 97</span>
+      </div>
+
+      <div class="cart-resumo-economia">
+        <span>Você economiza</span>
+        <strong id="resumoEconomia">R$ 1.393,00</strong>
+      </div>
+
+      <div class="cart-resumo-total">
+        <span>Total</span>
+        <strong id="resumoTotal">R$ 597</strong>
+      </div>
+
+      <button type="button" id="cartContinuar" class="cart-btn-continuar">
+        <i class="fab fa-whatsapp"></i> Continuar no WhatsApp
+      </button>
+
+      <p class="cart-resumo-nota"><i class="fas fa-lock"></i> Sem fidelidade — cancele quando quiser.</p>
+    </aside>
+
+  </div>
+</main>
+
+<script src="carrinho.js?v=1"></script>
+</body>
+</html>
