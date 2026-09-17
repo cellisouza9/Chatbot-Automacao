@@ -122,8 +122,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // ============================================
     const form = document.getElementById('botCtaForm');
     if (form) {
-        const GOOGLE_SHEETS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzr4vf2IfnoJmiN6WTCgdl50Sq_6Ksa9w1BfOSX5gGKbqGiqEAykaSxt-NE58ghLJzOSg/exec';
-
         form.addEventListener('submit', function (e) {
             e.preventDefault();
             const btn = form.querySelector('.btn-bot-form-submit');
@@ -131,17 +129,10 @@ document.addEventListener('DOMContentLoaded', function () {
             btn.textContent = 'Enviando...';
             btn.disabled = true;
 
-            const payload = {
-                nome: document.getElementById('botFormNome').value,
-                negocio: document.getElementById('botFormNegocio').value,
-                segmento: document.getElementById('botFormSegmento').value,
-                whatsapp: document.getElementById('botFormWhatsapp').value,
-                email: document.getElementById('botFormEmail').value
-            };
-
-            fetch(GOOGLE_SHEETS_ENDPOINT, {
+            fetch('https://formsubmit.co/ajax/cellisistemas@gmail.com', {
                 method: 'POST',
-                body: JSON.stringify(payload)
+                headers: { 'Accept': 'application/json' },
+                body: new FormData(form)
             })
                 .then(function () {
                     btn.textContent = '✅ Recebemos! Vamos te chamar no WhatsApp';
