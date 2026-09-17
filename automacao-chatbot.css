@@ -2300,6 +2300,39 @@ section { position: relative; }
   margin: 8px 0 16px;
 }
 
+.plano-instalacao {
+  font-size: 13px;
+  color: #4B4654;
+  margin-bottom: 12px;
+}
+
+.plano-instalacao strong {
+  color: #1F2937;
+}
+
+.planos-aviso {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  max-width: 720px;
+  margin: 0 auto 40px;
+  padding: 16px 20px;
+  background: #EDE9FE;
+  border: 1px solid #C4B5FD;
+  border-radius: 14px;
+  font-size: 14px;
+  color: #4C1D95;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.planos-aviso i {
+  color: #7C3AED;
+  font-size: 18px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
 /* ===== BENEFÍCIOS ===== */
 .plano-beneficios {
   list-style: none;

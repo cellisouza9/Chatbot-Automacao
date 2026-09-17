@@ -13,6 +13,7 @@
             badge: 'ECONÔMICO',
             desc: 'Feito para quem quer começar com automação no WhatsApp',
             precoAntigo: 'R$ 1.190,00',
+            instalacao: 690,
             precoMensal: 397,
             precoAnual: 4764,
             economiaAnual: 1390,
@@ -30,6 +31,7 @@
             badge: 'MAIS ESCOLHIDO',
             desc: 'O mais escolhido por negócios que querem vender no automático',
             precoAntigo: 'R$ 1.790,00',
+            instalacao: 980,
             precoMensal: 597,
             precoAnual: 7164,
             economiaAnual: 2090,
@@ -48,6 +50,7 @@
             badge: 'COMPLETO',
             desc: 'Para negócios que buscam automação completa e integrações',
             precoAntigo: 'R$ 2.690,00',
+            instalacao: 1490,
             precoMensal: 897,
             precoAnual: 10764,
             economiaAnual: 3130,
@@ -108,6 +111,7 @@
         var elPreco = document.getElementById('cartPreco');
         var elPrecoSufixo = document.getElementById('cartPrecoSufixo');
         var elBeneficios = document.getElementById('cartBeneficios');
+        var elInstalacaoValor = document.getElementById('cartInstalacaoValor');
         var ciclobtns = document.querySelectorAll('.cart-ciclo-btn');
         var addonBtn = document.getElementById('cartAddonBtn');
         var addon2Btn = document.getElementById('cartAddon2Btn');
@@ -115,6 +119,7 @@
         var resumoNome = document.getElementById('resumoNome');
         var resumoCiclo = document.getElementById('resumoCiclo');
         var resumoPreco = document.getElementById('resumoPreco');
+        var resumoInstalacao = document.getElementById('resumoInstalacao');
         var resumoAddonLinha = document.getElementById('resumoAddonLinha');
         var resumoAddon2Linha = document.getElementById('resumoAddon2Linha');
         var resumoAddonRemover = document.getElementById('resumoAddonRemover');
@@ -137,12 +142,14 @@
             elPrecoAntigo.textContent = plano.precoAntigo;
             animarNumero(elPreco, precoPlano, false);
             elPrecoSufixo.textContent = sufixo;
+            elInstalacaoValor.textContent = formatarReal(plano.instalacao);
 
             resumoNome.textContent = plano.nome;
             resumoCiclo.textContent = ciclo === 'mensal' ? 'Pago mensalmente' : 'Pago anualmente';
             animarNumero(resumoPreco, precoPlano, true);
+            animarNumero(resumoInstalacao, plano.instalacao, true);
 
-            var total = precoPlano;
+            var total = precoPlano + plano.instalacao;
             if (addonSelecionado) {
                 resumoAddonLinha.hidden = false;
                 total += ADDON_PRECO;
@@ -207,7 +214,7 @@
             if (addonSelecionado) addonsEscolhidos.push(ADDON_NOME);
             if (addon2Selecionado) addonsEscolhidos.push(ADDON2_NOME);
             var msg = 'Olá! Quero contratar o plano ' + plano.nome +
-                ' (' + formatarReal(precoPlano) + sufixo + ')' +
+                ' (' + formatarReal(precoPlano) + sufixo + ' + implantação de ' + formatarReal(plano.instalacao) + ')' +
                 (addonsEscolhidos.length ? ' com ' + addonsEscolhidos.join(' e ') : '') + '.';
             var url = 'https://wa.me/' + WHATSAPP_NUMERO + '?text=' + encodeURIComponent(msg);
             window.open(url, '_blank', 'noopener');
