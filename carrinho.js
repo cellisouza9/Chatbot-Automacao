@@ -74,8 +74,8 @@
         return PLANOS[slug] ? slug : 'profissional';
     }
 
-    function formatarNumeroAnimado(valor, valorFinal, comPrefixo) {
-        var temCentavos = Math.round(valorFinal * 100) % 100 !== 0;
+    function formatarNumeroAnimado(valor, comPrefixo) {
+        var temCentavos = Math.round(valor * 100) % 100 !== 0;
         var texto = temCentavos
             ? valor.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
             : Math.round(valor).toLocaleString('pt-BR');
@@ -83,23 +83,12 @@
     }
 
     function animarNumero(el, valorFinal, comPrefixo) {
-        var valorInicial = parseFloat(el.dataset.valorAtual || '0');
-        var inicio = performance.now();
-        var duracao = 500;
-
-        function passo(agora) {
-            var progresso = Math.min((agora - inicio) / duracao, 1);
-            var facilitado = 1 - Math.pow(1 - progresso, 3);
-            var valorAtual = valorInicial + (valorFinal - valorInicial) * facilitado;
-            el.textContent = formatarNumeroAnimado(valorAtual, valorFinal, comPrefixo);
-            if (progresso < 1) {
-                requestAnimationFrame(passo);
-            } else {
-                el.textContent = formatarNumeroAnimado(valorFinal, valorFinal, comPrefixo);
-                el.dataset.valorAtual = valorFinal;
-            }
-        }
-        requestAnimationFrame(passo);
+        el.classList.add('valor-animado', 'carregando');
+        clearTimeout(el._animTimeout);
+        el._animTimeout = setTimeout(function () {
+            el.textContent = formatarNumeroAnimado(valorFinal, comPrefixo);
+            el.classList.remove('carregando');
+        }, 180);
     }
 
     document.addEventListener('DOMContentLoaded', function () {

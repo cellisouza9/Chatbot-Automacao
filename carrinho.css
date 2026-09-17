@@ -121,7 +121,8 @@ img { max-width: 100%; display: block; }
   width: 52px;
   height: 52px;
   border-radius: 14px;
-  background: linear-gradient(135deg, var(--roxo-escuro), var(--roxo));
+  background: var(--branco);
+  border: 1px solid var(--cinza-borda);
   color: var(--branco);
   display: grid;
   place-items: center;
@@ -292,6 +293,16 @@ img { max-width: 100%; display: block; }
 }
 .cart-instalacao i { color: var(--roxo); font-size: 1rem; flex-shrink: 0; }
 .cart-instalacao strong { color: var(--preto-texto); }
+
+/* ---------- transição suave dos valores calculados ---------- */
+.valor-animado {
+  display: inline-block;
+  transition: opacity 0.25s ease, filter 0.25s ease;
+}
+.valor-animado.carregando {
+  opacity: 0;
+  filter: blur(4px);
+}
 
 /* ---------- add-ons: título de seção ---------- */
 .cart-addons-titulo { margin: 28px 0 14px; }
