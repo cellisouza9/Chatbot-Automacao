@@ -297,11 +297,11 @@ img { max-width: 100%; display: block; }
 /* ---------- transição suave dos valores calculados ---------- */
 .valor-animado {
   display: inline-block;
-  transition: opacity 0.25s ease, filter 0.25s ease;
+  transition: opacity 0.55s ease, filter 0.55s ease;
 }
 .valor-animado.carregando {
   opacity: 0;
-  filter: blur(4px);
+  filter: blur(6px);
 }
 
 /* ---------- add-ons: título de seção ---------- */

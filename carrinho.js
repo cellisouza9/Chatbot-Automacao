@@ -83,12 +83,15 @@
     }
 
     function animarNumero(el, valorFinal, comPrefixo) {
-        el.classList.add('valor-animado', 'carregando');
+        el.classList.add('valor-animado');
         clearTimeout(el._animTimeout);
-        el._animTimeout = setTimeout(function () {
-            el.textContent = formatarNumeroAnimado(valorFinal, comPrefixo);
-            el.classList.remove('carregando');
-        }, 180);
+        requestAnimationFrame(function () {
+            el.classList.add('carregando');
+            el._animTimeout = setTimeout(function () {
+                el.textContent = formatarNumeroAnimado(valorFinal, comPrefixo);
+                el.classList.remove('carregando');
+            }, 500);
+        });
     }
 
     document.addEventListener('DOMContentLoaded', function () {
