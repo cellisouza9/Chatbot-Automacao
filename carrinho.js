@@ -149,7 +149,7 @@
             animarNumero(resumoPreco, precoPlano, true);
             animarNumero(resumoInstalacao, plano.instalacao, true);
 
-            var total = precoPlano + plano.instalacao;
+            var total = plano.instalacao;
             if (addonSelecionado) {
                 resumoAddonLinha.hidden = false;
                 total += ADDON_PRECO;
@@ -158,7 +158,6 @@
             }
             if (addon2Selecionado) {
                 resumoAddon2Linha.hidden = false;
-                total += ADDON2_PRECO;
             } else {
                 resumoAddon2Linha.hidden = true;
             }
