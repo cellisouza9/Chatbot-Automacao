@@ -203,7 +203,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const conversaDemoInicial = [
         { tipo: 'bot', texto: 'Oi, tudo bem? 👋' },
         { tipo: 'me', texto: 'Oi, tudo! Quero saber sobre seus planos' },
-        { tipo: 'bot', texto: 'Claro! Temos 3 planos:\n\n💎 ESSENCIAL - R$197/mês\n💎 PROFISSIONAL - R$397/mês\n💎 ENTERPRISE - sob consulta\n\nQual te interessa?' },
+        { tipo: 'bot', texto: 'Claro! Temos 3 planos:\n\n💎 ESSENCIAL - R$397/mês\n💎 PROFISSIONAL - R$597/mês\n💎 PREMIUM - R$897/mês\n\nQual te interessa?' },
         { tipo: 'me', texto: 'Qual é a diferença?' },
         { tipo: 'bot', texto: 'O Profissional tem conversas ilimitadas, recuperação de carrinho, agendamentos automáticos e integração com Instagram. Quer agendar uma demo?' },
         { tipo: 'me', texto: 'Sim! Próxima segunda funciona?' },
@@ -315,7 +315,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (chatClose) chatClose.addEventListener('click', toggleChat);
 
     const respostas = {
-        'planos': '💎 Temos 3 planos de automação:<br><br>• <strong>ESSENCIAL</strong> — R$ 197/mês<br>• <strong>PROFISSIONAL</strong> — R$ 397/mês<br>• <strong>ENTERPRISE</strong> — sob consulta<br><br>Todos incluem configuração da IA no seu WhatsApp!',
+        'planos': '💎 Temos 3 planos de automação:<br><br>• <strong>ESSENCIAL</strong> — R$ 397/mês<br>• <strong>PROFISSIONAL</strong> — R$ 597/mês<br>• <strong>PREMIUM</strong> — R$ 897/mês<br><br>Todos incluem configuração da IA no seu WhatsApp!',
         'funciona': '🤖 É simples: conectamos a IA ao seu WhatsApp, treinamos com as informações do seu negócio e ela passa a atender, tirar dúvidas, recuperar clientes e vender sozinha, 24 horas por dia.',
         'demo': '🎥 Posso te mostrar como a automação funciona na prática! Preenche o formulário aqui embaixo que um especialista te chama no WhatsApp com uma demonstração ao vivo.',
         'contato': '📞 Quer falar com um especialista agora?<br><br><a href="https://wa.me/5521966729503" target="_blank" rel="noopener" class="bot-chat-wa-link"><i class="fab fa-whatsapp"></i> Conversar no WhatsApp</a><br><br>📧 E-mail: contato@cellysistemas.com'
