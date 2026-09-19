@@ -4,8 +4,8 @@
     var WHATSAPP_NUMERO = '5521966729503';
     var ADDON_PRECO = 97;
     var ADDON_NOME = 'Onboarding Prioritário';
-    var ADDON2_PRECO = 19.99;
-    var ADDON2_NOME = 'Gator Protect PRO';
+    var ADDON2_PRECO = 40;
+    var ADDON2_NOME = 'Celly Protect PRO';
 
     var PLANOS = {
         essencial: {
