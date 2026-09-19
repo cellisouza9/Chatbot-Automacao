@@ -15,8 +15,6 @@
             precoAntigo: 'R$ 1.190,00',
             instalacao: 690,
             precoMensal: 397,
-            precoAnual: 4764,
-            economiaAnual: 1390,
             beneficios: [
                 'IA no WhatsApp 24/7',
                 'Respostas personalizadas',
@@ -33,8 +31,6 @@
             precoAntigo: 'R$ 1.790,00',
             instalacao: 980,
             precoMensal: 597,
-            precoAnual: 7164,
-            economiaAnual: 2090,
             beneficios: [
                 'Tudo do Essencial',
                 'Agendamento automático',
@@ -52,8 +48,6 @@
             precoAntigo: 'R$ 2.690,00',
             instalacao: 1490,
             precoMensal: 897,
-            precoAnual: 10764,
-            economiaAnual: 3130,
             beneficios: [
                 'Tudo do Profissional',
                 'IA por voz',
@@ -100,7 +94,6 @@
     document.addEventListener('DOMContentLoaded', function () {
         var slugAtual = getPlanoDaUrl();
         var plano = PLANOS[slugAtual];
-        var ciclo = 'mensal';
         var addonSelecionado = false;
         var addon2Selecionado = false;
 
@@ -112,7 +105,6 @@
         var elPrecoSufixo = document.getElementById('cartPrecoSufixo');
         var elBeneficios = document.getElementById('cartBeneficios');
         var elInstalacaoValor = document.getElementById('cartInstalacaoValor');
-        var ciclobtns = document.querySelectorAll('.cart-ciclo-btn');
         var addonBtn = document.getElementById('cartAddonBtn');
         var addon2Btn = document.getElementById('cartAddon2Btn');
 
@@ -136,17 +128,14 @@
                 return '<li>' + b + '</li>';
             }).join('');
 
-            var precoPlano = ciclo === 'mensal' ? plano.precoMensal : plano.precoAnual;
-            var sufixo = ciclo === 'mensal' ? '/mês' : '/ano';
-
             elPrecoAntigo.textContent = plano.precoAntigo;
-            animarNumero(elPreco, precoPlano, false);
-            elPrecoSufixo.textContent = sufixo;
+            animarNumero(elPreco, plano.precoMensal, false);
+            elPrecoSufixo.textContent = '/mês';
             elInstalacaoValor.textContent = formatarReal(plano.instalacao);
 
             resumoNome.textContent = plano.nome;
-            resumoCiclo.textContent = ciclo === 'mensal' ? 'Pago mensalmente' : 'Pago anualmente';
-            animarNumero(resumoPreco, precoPlano, true);
+            resumoCiclo.textContent = 'Pago mensalmente';
+            animarNumero(resumoPreco, plano.precoMensal, true);
             animarNumero(resumoInstalacao, plano.instalacao, true);
 
             var total = plano.instalacao;
@@ -162,21 +151,10 @@
                 resumoAddon2Linha.hidden = true;
             }
 
-            resumoEconomia.textContent = ciclo === 'mensal'
-                ? '70% OFF já aplicado'
-                : formatarReal(plano.economiaAnual);
+            resumoEconomia.textContent = '70% OFF já aplicado';
 
             animarNumero(resumoTotal, total, true);
         }
-
-        ciclobtns.forEach(function (btn) {
-            btn.addEventListener('click', function () {
-                ciclobtns.forEach(function (b) { b.classList.remove('active'); });
-                btn.classList.add('active');
-                ciclo = btn.dataset.ciclo;
-                render();
-            });
-        });
 
         addonBtn.addEventListener('click', function () {
             addonSelecionado = !addonSelecionado;
@@ -207,13 +185,11 @@
         });
 
         continuarBtn.addEventListener('click', function () {
-            var precoPlano = ciclo === 'mensal' ? plano.precoMensal : plano.precoAnual;
-            var sufixo = ciclo === 'mensal' ? '/mês' : '/ano';
             var addonsEscolhidos = [];
             if (addonSelecionado) addonsEscolhidos.push(ADDON_NOME);
             if (addon2Selecionado) addonsEscolhidos.push(ADDON2_NOME);
             var msg = 'Olá! Quero contratar o plano ' + plano.nome +
-                ' (' + formatarReal(precoPlano) + sufixo + ' + implantação de ' + formatarReal(plano.instalacao) + ')' +
+                ' (' + formatarReal(plano.precoMensal) + '/mês + implantação de ' + formatarReal(plano.instalacao) + ')' +
                 (addonsEscolhidos.length ? ' com ' + addonsEscolhidos.join(' e ') : '') + '.';
             var url = 'https://wa.me/' + WHATSAPP_NUMERO + '?text=' + encodeURIComponent(msg);
             window.open(url, '_blank', 'noopener');
